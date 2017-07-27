@@ -24,10 +24,6 @@ $('#xxx').func();
 
 > It will be better if you attach some pictures of your device demo.**
 
-<div align="center">
-<img src="https://xxx" width = "100" height = "100" alt="device demo" />
-</div>
-
 ## API References
 
 ### Methods

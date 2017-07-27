@@ -53,3 +53,5 @@ Dispatcher.prototype.dispatch = function(data){
     }
   }
 };
+
+module.exports = Dispatcher;

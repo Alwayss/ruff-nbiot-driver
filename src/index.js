@@ -1,15 +1,16 @@
 'use strict';
 
 var driver = require('ruff-driver');
-var CmdCommunication = require('./cmdCommunication');
+var Dispatcher = require('./dispatcher');
 var createCommands = require('./commands');
-var Dis
+var CmdCommunication = require('./cmdCommunication');
 
 module.exports = driver({
 
   attach: function (inputs, context) {
     this._uart = inputs['uart'];
-    this._cmdCommunication = new CmdCommunication(this._uart);
+    this._dispatcher = new Dispatcher(this._uart);
+    this._cmdCommunication = new CmdCommunication(this._uart, this._dispatcher);
     this._commands = createCommands(this._cmdCommunication);
 
     //add func that sending AT cmd to wireless module
@@ -22,17 +23,11 @@ module.exports = driver({
       that.emit('ready');
     });
 
+    //get the transmission channel id
     this._cmdCommunication.on('channelId',function(channelId){
-      that.emit('channelId');
+      that.emit('channelId',channelId);
     })
 
 
-  },
-
-  exports: {
-    func: function () {
-      // this._<interface>.<method>
-    }
   }
-
 });

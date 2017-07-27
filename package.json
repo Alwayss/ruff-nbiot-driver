@@ -1,0 +1,7 @@
+{
+    "name": "ruff-nbiot-driver",
+    "version": "0.1.0",
+    "description": "nbiot wireless module driver",
+    "author": "huangwj",
+    "main": "src/index.js"
+}
